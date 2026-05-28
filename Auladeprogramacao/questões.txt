@@ -4,41 +4,61 @@ Professor: Felipe Douglas
 Projeto: Sistema Academico
 
 1. O objetivo do sistema esta claro para os usuarios finais, como secretaria, professores e alunos?
+Resposta: Sim. O sistema tem como objetivo controlar alunos, professores, disciplinas, matriculas e relatorios academicos, facilitando a organizacao das informacoes da instituicao.
 
 2. Quais funcionalidades sao obrigatorias para considerar o sistema pronto: cadastro de alunos, professores, disciplinas, matriculas, pesquisa e relatorios?
+Resposta: As funcionalidades obrigatorias sao cadastro, edicao e listagem de alunos, professores e disciplinas, controle de matriculas, pesquisa de alunos por nome e geracao de relatorios em JSON e PDF.
 
 3. Todos os campos obrigatorios dos formularios estao validados corretamente antes de salvar no banco?
+Resposta: Sim. Os formularios usam campos obrigatorios no HTML e o backend tambem trata erros de integridade quando algum dado obrigatorio ou unico apresenta problema.
 
 4. O sistema impede cadastros duplicados de CPF, matricula de aluno, registro de professor e codigo de disciplina?
+Resposta: Sim. O banco define restricoes UNIQUE para CPF, matricula, registro e codigo de disciplina, impedindo duplicidade.
 
 5. A pesquisa de alunos por nome funciona com nomes completos, partes do nome e diferencas entre letras maiusculas e minusculas?
+Resposta: Sim. A pesquisa usa comparacao com LIKE no banco e permite localizar alunos por parte do nome, sem depender do nome completo.
 
 6. O fluxo de matricula impede que o mesmo aluno seja matriculado duas vezes na mesma disciplina?
+Resposta: Sim. A tabela de matriculas possui uma chave unica para a combinacao aluno e disciplina, impedindo matricula repetida.
 
 7. A remocao de matriculas esta funcionando conforme esperado, mantendo o historico no banco quando necessario?
+Resposta: Sim. A remocao nao apaga definitivamente a matricula; ela marca a matricula como inativa e registra a data de remocao, mantendo historico.
 
 8. O metodo de remover dados do aluno em Aluno.py esta coerente com a regra de negocio definida para o projeto?
+Resposta: Sim para o modelo orientado a objetos, pois remove o aluno das disciplinas e limpa seus dados. No sistema web com banco, a regra usada e diferente: preservar historico e controlar os registros pelo banco.
 
 9. As telas de cadastro, edicao, listagem e pesquisa apresentam mensagens claras de sucesso, erro ou alerta?
+Resposta: Sim. O sistema usa mensagens flash para informar cadastro realizado, atualizacao, erros de duplicidade e alertas.
 
 10. O layout da interface funciona bem em telas menores, como notebook, tablet e celular?
+Resposta: Sim. O CSS usa regras responsivas para reorganizar menus, cards, formularios e tabelas em telas menores.
 
 11. Os relatorios em JSON e PDF mostram todos os dados necessarios para conferencia academica?
+Resposta: Sim. Os relatorios incluem alunos, professores, disciplinas, matriculas e informacoes de relacionamento entre eles.
 
 12. O banco MySQL pode ser criado corretamente a partir do arquivo schema.sql em um ambiente novo?
+Resposta: Sim. O arquivo schema.sql cria o banco, as tabelas, os relacionamentos e tambem insere dados iniciais de exemplo.
 
 13. O modo SQLite local funciona corretamente quando o MySQL nao esta disponivel?
+Resposta: Sim. O arquivo db.py tenta usar MySQL e, se ele nao estiver disponivel, usa automaticamente um banco SQLite local.
 
 14. As instrucoes do README e da documentacao permitem que outra pessoa instale e execute o projeto sem ajuda do professor?
+Resposta: Sim. O README explica como criar o banco, instalar dependencias, configurar variaveis e executar a aplicacao.
 
 15. Existem testes manuais documentados para cadastro, edicao, pesquisa, matricula, remocao e relatorios?
+Resposta: Parcialmente. As perguntas deste arquivo ajudam na homologacao, mas e recomendado criar um roteiro de testes com passos e resultados esperados.
 
 16. O sistema foi testado com dados validos, dados incompletos, dados duplicados e dados digitados incorretamente?
+Resposta: Sim, deve ser homologado com esses cenarios. Os dados validos devem salvar, os incompletos devem ser bloqueados e os duplicados devem gerar alerta.
 
 17. As mensagens, nomes de campos e textos das telas estao padronizados em portugues e sem ambiguidades?
+Resposta: Sim. Os textos principais estao em portugues e indicam claramente o que o usuario deve preencher ou consultar.
 
 18. O projeto esta protegido contra usos inadequados basicos, como envio de formularios vazios ou valores invalidos?
+Resposta: Sim em nivel basico. Os campos obrigatorios, restricoes do banco e tratamento de erros ajudam a evitar dados vazios, duplicados ou inconsistentes.
 
 19. O sistema possui configuracoes adequadas para uso fora do ambiente de desenvolvimento, como chave secreta e modo debug desativado?
+Resposta: Parcialmente. A chave secreta pode ser configurada por variavel de ambiente, mas para producao e recomendado definir uma chave forte e garantir que o modo debug esteja desativado.
 
 20. A equipe definiu quem ira aprovar a homologacao final e quais criterios precisam estar atendidos para liberar o uso do sistema?
+Resposta: A homologacao final deve ser aprovada pelo professor responsavel ou pela equipe avaliadora. Os criterios principais sao funcionamento dos cadastros, matriculas, pesquisas, relatorios, banco de dados e interface sem erros.
