@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<section class="login-page">
+  <div class="login-copy">
+    <p class="eyebrow">{{ title }}</p>
+    <h1>{{ heading }}</h1>
+    <p>Use seus dados cadastrados no sistema para continuar.</p>
+  </div>
+
+  <form class="login-card" method="post">
+    <label>{{ label }}
+      <input name="identificador" placeholder="{{ placeholder }}" required autofocus>
+    </label>
+    <label>CPF
+      <input name="cpf" placeholder="Digite seu CPF" required>
+    </label>
+    <button type="submit">Continuar</button>
+    <a class="create-account" href="{{ create_url }}">Criar cadastro de {{ role }}</a>
+    <div class="login-divider"><span>ou</span></div>
+    <a class="outline-button" href="{{ url_for('index') }}">Voltar para a pagina inicial</a>
+
+    {% if role == "aluno" %}
+      <section class="registered-list">
+        <h2>Alunos cadastrados</h2>
+        {% for aluno in alunos_cadastrados %}
+          <article>
+            <strong>{{ aluno.nome }}</strong>
+            <span>Matricula: {{ aluno.matricula }}</span>
+            <span>CPF: {{ aluno.cpf }}</span>
+          </article>
+        {% else %}
+          <p>Nenhum aluno cadastrado.</p>
+        {% endfor %}
+      </section>
+    {% endif %}
+  </form>
+</section>
+{% endblock %}
